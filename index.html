@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f4f7fb">
+    <title>My—planner</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="app-shell">
+        <header class="topbar">
+            <a class="brand" href="#" aria-label="My—planner home">
+                <span class="brand-mark" aria-hidden="true">M</span>
+                <span>my—To-Do</span>
+            </a>
+            <span class="topbar-note">A little more focus, every day.</span>
+        </header>
+
+        <section class="welcome">
+            <div>
+                <p class="eyebrow">YOUR PERSONAL PLANNER</p>
+                <h1>Make today count.</h1>
+                <p class="subtitle">A clear plan turns big things into little steps.</p>
+            </div>
+            <div class="date-card" aria-label="Today's date">
+                <span class="date-card-label">TODAY</span>
+                <span id="todayDate"></span>
+            </div>
+        </section>
+
+        <section class="planner-grid" aria-label="Task planner">
+            <div class="main-column">
+                <form class="task-form" id="taskForm">
+                    <div class="form-heading">
+                        <div>
+                            <p class="eyebrow" id="formEyebrow">GET IT OUT OF YOUR HEAD</p>
+                            <h2 id="formTitle">Add a task</h2>
+                        </div>
+                        <span class="form-icon" aria-hidden="true">＋</span>
+                    </div>
+
+                    <label class="field-label" for="taskInput">What needs to get done?</label>
+                    <input
+                        type="text"
+                        id="taskInput"
+                        name="task"
+                        placeholder="e.g. Prepare the project presentation"
+                        maxlength="180"
+                        autocomplete="off"
+                        required
+                    >
+
+                    <div class="form-row">
+                        <div class="field-group">
+                            <label class="field-label" for="dueDate">Due date &amp; time <span class="optional">(optional)</span></label>
+                            <input type="datetime-local" id="dueDate" name="dueDate">
+                        </div>
+                        <div class="field-group">
+                            <label class="field-label" for="reminderDate">Remind me <span class="optional">(optional)</span></label>
+                            <input type="datetime-local" id="reminderDate" name="reminderDate">
+                        </div>
+                    </div>
+
+                    <div class="form-footer">
+                        <p class="form-hint">Reminders appear while this page is open.</p>
+                        <div class="form-actions">
+                            <button class="button button-quiet" type="button" id="cancelEditBtn" hidden>Cancel</button>
+                            <button class="button button-primary" type="submit" id="saveTaskBtn">
+                                <span id="saveButtonText">Add task</span>
+                                <span aria-hidden="true">→</span>
+                            </button>
+                        </div>
+                    </div>
+                    <p class="form-message" id="formMessage" role="status" aria-live="polite"></p>
+                </form>
+
+                <section class="tasks-section">
+                    <div class="section-heading">
+                        <div>
+                            <p class="eyebrow">YOUR TASKS</p>
+                            <h2>Task list <span class="task-count" id="taskCount">0</span></h2>
+                        </div>
+                        <div class="filter-tabs" role="group" aria-label="Filter tasks">
+                            <button class="filter-button active" type="button" data-filter="all" aria-pressed="true">All</button>
+                            <button class="filter-button" type="button" data-filter="active" aria-pressed="false">To do</button>
+                            <button class="filter-button" type="button" data-filter="completed" aria-pressed="false">Done</button>
+                        </div>
+                    </div>
+                    <ul id="taskList" class="task-list" aria-live="polite"></ul>
+                    <div class="empty-state" id="emptyState">
+                        <span class="empty-icon" aria-hidden="true">✦</span>
+                        <h3>Your list is clear</h3>
+                        <p>Add a task above and make a little progress.</p>
+                    </div>
+                </section>
+            </div>
+
+            <aside class="side-card">
+                <div class="side-card-icon" aria-hidden="true">✳</div>
+                <p class="eyebrow">A MOMENT TO RESET</p>
+                <h2>Progress, not perfection.</h2>
+                <p>Every task you finish is one less thing to carry. Keep your list kind, clear, and achievable.</p>
+                <div class="progress-area">
+                    <div class="progress-label">
+                        <span>Today's progress</span>
+                        <strong id="progressText">0%</strong>
+                    </div>
+                    <div class="progress-track" role="progressbar" aria-label="Today's task completion" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="progressBar">
+                        <span id="progressFill"></span>
+                    </div>
+                </div>
+            </aside>
+        </section>
+        <footer class="page-footer">Your tasks are saved on this device.</footer>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
